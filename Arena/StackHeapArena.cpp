@@ -10,64 +10,64 @@ Arena fast { Max, sizeof(int) };
 
 void stack()
 {
-	int a = 5;
+    int a = 5;
 }
 
 void heap()
 {
-	int * p = new int;
-	*p = 5;
-	delete p;
+    int * p = new int;
+    *p = 5;
+    delete p;
 }
 
 void arena()
 {
-	int * p = (int*) fast.New();
-	*p = 5;
-	fast.Delete(p);
+    int * p = (int*) fast.New();
+    *p = 5;
+    fast.Delete(p);
 }
 
 int main()
 {
-	// ------------------------------------------------------------------
-	// Stack
-	// ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    // Stack
+    // ------------------------------------------------------------------
 
-	auto start = high_resolution_clock::now();
-	for (int i = 0; i < Max; ++i)
-		stack();
-	auto end = high_resolution_clock::now();
+    auto start = high_resolution_clock::now();
+    for (int i = 0; i < Max; ++i)
+        stack();
+    auto end = high_resolution_clock::now();
 
-	cout << "Stack: ";
-	cout.width(4);
-	cout << right; 
-	cout << duration_cast<milliseconds>(end - start).count() << " milissegundos" << endl;
+    cout << "Stack: ";
+    cout.width(4);
+    cout << right; 
+    cout << duration_cast<milliseconds>(end - start).count() << " milissegundos" << endl;
 
-	// ------------------------------------------------------------------
-	// Heap
-	// ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    // Heap
+    // ------------------------------------------------------------------
 
-	start = high_resolution_clock::now();
-	for (int i = 0; i < Max; ++i)
-		heap();
-	end = high_resolution_clock::now();
+    start = high_resolution_clock::now();
+    for (int i = 0; i < Max; ++i)
+        heap();
+    end = high_resolution_clock::now();
 
-	cout << "Heap:  "; 
-	cout.width(4);
-	cout << right;
-	cout << duration_cast<milliseconds>(end - start).count() << " milissegundos" << endl;
+    cout << "Heap:  "; 
+    cout.width(4);
+    cout << right;
+    cout << duration_cast<milliseconds>(end - start).count() << " milissegundos" << endl;
 
-	// ------------------------------------------------------------------
-	// Arena
-	// ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    // Arena
+    // ------------------------------------------------------------------
 
-	start = high_resolution_clock::now();
-	for (int i = 0; i < Max; ++i)
-		arena();
-	end = high_resolution_clock::now();
+    start = high_resolution_clock::now();
+    for (int i = 0; i < Max; ++i)
+        arena();
+    end = high_resolution_clock::now();
 
-	cout << "Arena: ";
-	cout.width(4);
-	cout << right; 
-	cout << duration_cast<milliseconds>(end - start).count() << " milissegundos" << endl;
+    cout << "Arena: ";
+    cout.width(4);
+    cout << right; 
+    cout << duration_cast<milliseconds>(end - start).count() << " milissegundos" << endl;
 }

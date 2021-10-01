@@ -9,18 +9,18 @@ using uint = unsigned int;
 class Arena
 {
 private:
-	const uint headerSize = sizeof(byte*);
-	uint   blockCount;
-	uint   blockSize;
-	byte * memory;
-	byte * head;
+    const uint headerSize = sizeof(byte*);
+    uint   blockCount;
+    uint   blockSize;
+    byte * memory;
+    byte * head;
 
 public:
-	Arena(uint dataCount, uint dataSize);
-	~Arena();
+    Arena(uint dataCount, uint dataSize);
+    ~Arena();
 
-	void * New();
-	void   Delete(void * mem);
+    void * New();
+    void   Delete(void * mem);
 };
 
 #endif
